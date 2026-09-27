@@ -297,7 +297,9 @@ with tab_input:
                 st.success("Done. Open the **Leaderboard** tab.")
             except Exception as exc:
                 status.update(label="Run failed", state="error")
-                st.error(str(exc))
+                st.session_state.run_error = str(exc)
+        if st.session_state.get("run_error"):
+            st.error(st.session_state.pop("run_error"))
 
 
 # ====================================================================== helpers

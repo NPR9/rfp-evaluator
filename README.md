@@ -8,7 +8,7 @@ leaderboard where each rank can be explained.
 evidence for each criterion). **Python does all of the arithmetic, benchmarking, tie-breaking and
 ranking**, so the same validated scorecards always produce the same result.
 
-- **Live app:** `https://<your-app>.streamlit.app` ← *add after deployment*
+- **Live app:** `https://npr9-rfp-evaluator-app-niajav.streamlit.app` ← *add after deployment*
 - **Stack:** Streamlit · SQLite · LangGraph · PyMuPDF/pypdf · Pydantic · OpenAI / Anthropic / any
   OpenAI-compatible LLM (Groq, OpenRouter, Ollama)
 

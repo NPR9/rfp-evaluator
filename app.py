@@ -15,19 +15,30 @@ import streamlit as st
 st.set_page_config(page_title="Agentic RFP Evaluator", page_icon="📑", layout="wide")
 
 # Copy Streamlit Cloud secrets into env vars BEFORE importing config.
+_SECRET_KEYS = ("LLM_PROVIDER", "LLM_MODEL", "LLM_BASE_URL", "LLM_API_KEY",
+                "OPENAI_API_KEY", "ANTHROPIC_API_KEY")
+_secrets_found: list[str] = []
 try:
-    for _k in ("LLM_PROVIDER", "LLM_MODEL", "LLM_BASE_URL", "LLM_API_KEY",
-               "OPENAI_API_KEY", "ANTHROPIC_API_KEY"):
-        if _k in st.secrets and not os.getenv(_k):
-            os.environ[_k] = str(st.secrets[_k])
+    _flat = dict(st.secrets)
+    for _v in list(_flat.values()):
+        if hasattr(_v, "items"):
+            _flat.update({k: v for k, v in _v.items() if k not in _flat})
+    for _k in _SECRET_KEYS:
+        if _k in _flat and str(_flat[_k]).strip():
+            os.environ[_k] = str(_flat[_k]).strip()
+            _secrets_found.append(_k)
 except Exception:
-    pass  # no secrets file locally - fine
+    pass
 
 from rfp import db  # noqa: E402
 from rfp.agents.evaluation_agent import LLMSettings  # noqa: E402
 from rfp.config import (DEFAULT_MODELS, EXPERIENCE_MAX, EXPERIENCE_MIN,  # noqa: E402
                         LLM_BASE_URL, LLM_MODEL, LLM_PROVIDER)
 from rfp.orchestrator import FAULT_MODES, run_rfp_evaluation  # noqa: E402
+
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", LLM_PROVIDER)
+LLM_MODEL = os.getenv("LLM_MODEL", LLM_MODEL)
+LLM_BASE_URL = os.getenv("LLM_BASE_URL", LLM_BASE_URL)
 from rfp.sample_suppliers import SAMPLE_SUPPLIERS, load_sample_suppliers  # noqa: E402
 from rfp.tools.document_tool import DocumentError, extract_pdf_text  # noqa: E402
 
@@ -69,7 +80,8 @@ with st.sidebar:
     else:
         st.info("The offline evaluator scores with transparent keyword signals. "
                 "Use a real LLM for the actual qualitative judgement.")
-    st.caption("temperature = 0 for reproducibility")
+    st.caption("temperature = 0 for reproducibility · secrets detected: "
+               + (", ".join(_secrets_found) if _secrets_found else "none"))
 
     st.divider()
     st.header("🧪 Demo: validation / error cases")

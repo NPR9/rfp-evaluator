@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+rfp_evaluation.db
+.streamlit/secrets.toml
+.env

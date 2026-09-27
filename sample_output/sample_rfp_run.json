@@ -1,0 +1,655 @@
+{
+  "rfp_run_id": "RFP-20260927-090910-A20F77",
+  "created_at": "2026-09-27T09:09:10+00:00",
+  "completed_at": "2026-09-27T09:10:13+00:00",
+  "status": "COMPLETED",
+  "llm": {
+    "provider": "openai",
+    "model": "openai/gpt-oss-120b",
+    "temperature": 0.0
+  },
+  "fault_injection": "none",
+  "criteria": [
+    {
+      "criterion_id": 1,
+      "name": "Technical Capability",
+      "description": "Architecture, integrations, scalability, technical fit",
+      "weight": 30.0,
+      "max_score": 10.0
+    },
+    {
+      "criterion_id": 2,
+      "name": "Implementation Plan",
+      "description": "Timeline, milestones, staffing, risk plan",
+      "weight": 20.0,
+      "max_score": 10.0
+    },
+    {
+      "criterion_id": 3,
+      "name": "Commercial Value",
+      "description": "Pricing clarity, total cost, assumptions",
+      "weight": 20.0,
+      "max_score": 10.0
+    },
+    {
+      "criterion_id": 4,
+      "name": "Security & Compliance",
+      "description": "Controls, certifications, privacy, auditability",
+      "weight": 20.0,
+      "max_score": 10.0
+    },
+    {
+      "criterion_id": 5,
+      "name": "Support & Experience",
+      "description": "Support model, similar projects, references",
+      "weight": 10.0,
+      "max_score": 10.0
+    }
+  ],
+  "formulas": {
+    "weighted_points": "score / max_score * weight",
+    "absolute_weighted_score": "sum over criteria of (score / max_score * weight)  [0-100]",
+    "criterion_benchmark": "highest validated score for the criterion across all suppliers",
+    "criterion_gap": "score - benchmark_score  (0 for the leader, otherwise negative)",
+    "relative_performance_pct": "score / benchmark_score * 100; 0 when benchmark_score = 0",
+    "peer_performance_index": "sum(relative_pct * weight) / sum(weight)  [0-100]"
+  },
+  "tie_break_rules": [
+    "1) Higher PPI",
+    "2) Earlier submission date",
+    "3) Higher historical experience rating",
+    "4) Supplier name ascending (A-Z)"
+  ],
+  "benchmarks": [
+    {
+      "criterion_id": 1,
+      "criterion_name": "Technical Capability",
+      "benchmark_score": 9.0,
+      "max_score": 10.0,
+      "weight": 30.0,
+      "leaders": [
+        "Apex Systems"
+      ]
+    },
+    {
+      "criterion_id": 2,
+      "criterion_name": "Implementation Plan",
+      "benchmark_score": 9.0,
+      "max_score": 10.0,
+      "weight": 20.0,
+      "leaders": [
+        "NexaWorks"
+      ]
+    },
+    {
+      "criterion_id": 3,
+      "criterion_name": "Commercial Value",
+      "benchmark_score": 8.0,
+      "max_score": 10.0,
+      "weight": 20.0,
+      "leaders": [
+        "Apex Systems",
+        "BrightPath Tech",
+        "NexaWorks"
+      ]
+    },
+    {
+      "criterion_id": 4,
+      "criterion_name": "Security & Compliance",
+      "benchmark_score": 9.0,
+      "max_score": 10.0,
+      "weight": 20.0,
+      "leaders": [
+        "Apex Systems",
+        "NexaWorks"
+      ]
+    },
+    {
+      "criterion_id": 5,
+      "criterion_name": "Support & Experience",
+      "benchmark_score": 9.0,
+      "max_score": 10.0,
+      "weight": 10.0,
+      "leaders": [
+        "Orbit Digital"
+      ]
+    }
+  ],
+  "leaderboard": [
+    {
+      "supplier_name": "NexaWorks",
+      "submission_date": "2026-09-09",
+      "experience_rating": 4.0,
+      "source_file": "NexaWorks_Proposal.pdf",
+      "document": {
+        "filename": "NexaWorks_Proposal.pdf",
+        "pages": 2,
+        "chars": 5327,
+        "extractor": "pymupdf",
+        "truncated": false
+      },
+      "llm_attempts": 1,
+      "raw_llm_output": "{\"supplier_name\":\"NexaWorks\",\"criteria\":[{\"criterion_id\":1,\"score\":8,\"max_score\":10,\"justification\":\"The proposal details a composable CDP architecture on Google Cloud with BigQuery storage, streaming and micro‑batch ingestion, deterministic and fuzzy identity resolution, and listed integrations for Salesforce and SAP, plus a scalability claim to 25 million profiles, meeting most technical capability aspects but lacking deeper performance metrics.\",\"evidence\":\"We propose a composable CDP on Google Cloud (EU region) with a BigQuery-based unified profile store, near-real-time streaming ingestion for web and app events, and 15‑minute micro‑batch ingestion for POS and loyalty. ... Integrations: standard connectors for Salesforce Service Cloud and an SAP integration built on SAP Integration Suite. The platform supports 25 million profiles on the proposed tier and scales by upgrading the tier.\"},{\"criterion_id\":2,\"score\":9,\"max_score\":10,\"justification\":\"Provides a clear 22‑week timeline with phased milestones, detailed staffing list (11 FTE at peak) and a risk register with specific mitigations, demonstrating a robust implementation plan; minor gaps in contingency depth keep it just short of full marks.\",\"evidence\":\"Delivery runs for 22 weeks in five stage‑gated phases... Team (named in Appendix A): engagement director, delivery manager, solution architect, 4 data engineers, 2 marketing‑automation specialists, QA lead, change and training lead - 11 FTE at peak, 70%... Risk plan: a live risk register with owners and mitigations. Top risks: (1) SAP data quality - mitigated by a data‑profiling sprint in weeks 3‑4; (2) identity match rate below target - mitigated by tuning cycles with a 95% acceptance gate; (3) peak‑season freeze - go‑live scheduled before the November change freeze with a rollback plan rehearsed in UAT; (4) key‑person dependency - named deputies for every lead role.\"},{\"criterion_id\":3,\"score\":8,\"max_score\":10,\"justification\":\"Pricing is presented as a fixed‑price implementation with a detailed cost breakdown and clear assumptions, offering good commercial transparency; however, limited detail on post‑implementation cost variations beyond CPI‑linked caps reduces the score slightly.\",\"evidence\":\"Fixed‑price implementation with milestone‑based payments (20/30/30/20). Prices exclude VAT. Item Price (EUR) Implementation (fixed price, 22 weeks) 520,000 ... Platform licence & Google Cloud hosting, per year 118,000 ... Managed support (24x7), per year 36,000 ... Total cost of ownership, 3 years 982,000 ... Assumptions: pricing covers up to 25 million profiles and 20 journeys; Northwind provides a product owner at 50% allocation; travel is included; change requests at EUR 950 per day; year‑2 and year‑3 prices are capped at CPI + 2%.\"},{\"criterion_id\":4,\"score\":9,\"max_score\":10,\"justification\":\"The supplier lists ISO 27001 certification, SOC 2 Type I completed, upcoming Type II, and multiple security controls (encryption, MFA, least‑privilege, GDPR workflows, audit logging), satisfying most security and compliance requirements; pending SOC 2 Type II audit prevents a perfect score.\",\"evidence\":\"NexaWorks is ISO/IEC 27001:2022 certified and has completed a SOC 2 Type I assessment; the SOC 2 Type II audit is scheduled for Q1 2027. Data is hosted in Google Cloud europe‑west3 (Frankfurt). Controls: encryption at rest and in transit, SSO with MFA, least‑privilege roles, consent and preference centre with per‑channel opt‑in, automated GDPR access/erasure workflows, and audit logging of all profile access. We will sign Northwind's DPA and support a DPIA.\"},{\"criterion_id\":5,\"score\":8,\"max_score\":10,\"justification\":\"Describes a 24x7 follow‑the‑sun support model with SLAs, a Technical Account Manager, and a hypercare period, plus experience of 14 similar programmes and references; however, references are fictional and no quantitative support metrics are provided, limiting the score.\",\"evidence\":\"Support: 24x7 follow‑the‑sun service desk (Pune, Lisbon, Toronto) with a dedicated Technical Account Manager. SLAs: P1 response 15 minutes and restore target 4 hours; P2 response 1 hour; P3 response 8 hours. Service credits apply when SLAs are missed. Monthly service reviews and quarterly roadmap sessions are included, together with a 90‑day hypercare period after go‑live. Experience: 14 CDP or marketing‑automation programmes since 2019, including six for multi‑country retailers. References (fictional): Director of CRM, Harbor & Pine Outfitters; VP Digital, Kestrel Supermarkets; Head of Loyalty, Solstice Beauty.\"}],\"risks\":[\"Key‑person dependency risk is noted with named deputies but lacks a detailed succession or knowledge‑transfer plan.\",\"Scalability is capped at 25 million profiles; the proposal does not address growth beyond this limit.\"],\"overall_summary\":\"NexaWorks presents a well‑structured technical solution, clear implementation timeline, transparent pricing, and solid security certifications. While support arrangements and relevant experience are demonstrated, some gaps remain around long‑term scalability and depth of key‑person risk mitigation.\"}",
+      "absolute_score": 84.0,
+      "ppi": 95.5556,
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "criterion_name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10.0,
+          "score": 8.0,
+          "weighted_points": 24.0,
+          "benchmark_score": 9.0,
+          "gap": -1.0,
+          "relative_pct": 88.8889,
+          "is_benchmark_leader": false,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "The proposal details a composable CDP architecture on Google Cloud with BigQuery storage, streaming and micro‑batch ingestion, deterministic and fuzzy identity resolution, and listed integrations for Salesforce and SAP, plus a scalability claim to 25 million profiles, meeting most technical capability aspects but lacking deeper performance metrics.",
+          "evidence": "We propose a composable CDP on Google Cloud (EU region) with a BigQuery-based unified profile store, near-real-time streaming ingestion for web and app events, and 15‑minute micro‑batch ingestion for POS and loyalty. ... Integrations: standard connectors for Salesforce Service Cloud and an SAP integration built on SAP Integration Suite. The platform supports 25 million profiles on the proposed tier and scales by upgrading the tier."
+        },
+        {
+          "criterion_id": 2,
+          "criterion_name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10.0,
+          "score": 9.0,
+          "weighted_points": 18.0,
+          "benchmark_score": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "is_benchmark_leader": true,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "Provides a clear 22‑week timeline with phased milestones, detailed staffing list (11 FTE at peak) and a risk register with specific mitigations, demonstrating a robust implementation plan; minor gaps in contingency depth keep it just short of full marks.",
+          "evidence": "Delivery runs for 22 weeks in five stage‑gated phases... Team (named in Appendix A): engagement director, delivery manager, solution architect, 4 data engineers, 2 marketing‑automation specialists, QA lead, change and training lead - 11 FTE at peak, 70%... Risk plan: a live risk register with owners and mitigations. Top risks: (1) SAP data quality - mitigated by a data‑profiling sprint in weeks 3‑4; (2) identity match rate below target - mitigated by tuning cycles with a 95% acceptance gate; (3) peak‑season freeze - go‑live scheduled before the November change freeze with a rollback plan rehearsed in UAT; (4) key‑person dependency - named deputies for every lead role."
+        },
+        {
+          "criterion_id": 3,
+          "criterion_name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10.0,
+          "score": 8.0,
+          "weighted_points": 16.0,
+          "benchmark_score": 8.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "is_benchmark_leader": true,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "Pricing is presented as a fixed‑price implementation with a detailed cost breakdown and clear assumptions, offering good commercial transparency; however, limited detail on post‑implementation cost variations beyond CPI‑linked caps reduces the score slightly.",
+          "evidence": "Fixed‑price implementation with milestone‑based payments (20/30/30/20). Prices exclude VAT. Item Price (EUR) Implementation (fixed price, 22 weeks) 520,000 ... Platform licence & Google Cloud hosting, per year 118,000 ... Managed support (24x7), per year 36,000 ... Total cost of ownership, 3 years 982,000 ... Assumptions: pricing covers up to 25 million profiles and 20 journeys; Northwind provides a product owner at 50% allocation; travel is included; change requests at EUR 950 per day; year‑2 and year‑3 prices are capped at CPI + 2%."
+        },
+        {
+          "criterion_id": 4,
+          "criterion_name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10.0,
+          "score": 9.0,
+          "weighted_points": 18.0,
+          "benchmark_score": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "is_benchmark_leader": true,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "The supplier lists ISO 27001 certification, SOC 2 Type I completed, upcoming Type II, and multiple security controls (encryption, MFA, least‑privilege, GDPR workflows, audit logging), satisfying most security and compliance requirements; pending SOC 2 Type II audit prevents a perfect score.",
+          "evidence": "NexaWorks is ISO/IEC 27001:2022 certified and has completed a SOC 2 Type I assessment; the SOC 2 Type II audit is scheduled for Q1 2027. Data is hosted in Google Cloud europe‑west3 (Frankfurt). Controls: encryption at rest and in transit, SSO with MFA, least‑privilege roles, consent and preference centre with per‑channel opt‑in, automated GDPR access/erasure workflows, and audit logging of all profile access. We will sign Northwind's DPA and support a DPIA."
+        },
+        {
+          "criterion_id": 5,
+          "criterion_name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10.0,
+          "score": 8.0,
+          "weighted_points": 8.0,
+          "benchmark_score": 9.0,
+          "gap": -1.0,
+          "relative_pct": 88.8889,
+          "is_benchmark_leader": false,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "Describes a 24x7 follow‑the‑sun support model with SLAs, a Technical Account Manager, and a hypercare period, plus experience of 14 similar programmes and references; however, references are fictional and no quantitative support metrics are provided, limiting the score.",
+          "evidence": "Support: 24x7 follow‑the‑sun service desk (Pune, Lisbon, Toronto) with a dedicated Technical Account Manager. SLAs: P1 response 15 minutes and restore target 4 hours; P2 response 1 hour; P3 response 8 hours. Service credits apply when SLAs are missed. Monthly service reviews and quarterly roadmap sessions are included, together with a 90‑day hypercare period after go‑live. Experience: 14 CDP or marketing‑automation programmes since 2019, including six for multi‑country retailers. References (fictional): Director of CRM, Harbor & Pine Outfitters; VP Digital, Kestrel Supermarkets; Head of Loyalty, Solstice Beauty."
+        }
+      ],
+      "risks": [
+        "Key‑person dependency risk is noted with named deputies but lacks a detailed succession or knowledge‑transfer plan.",
+        "Scalability is capped at 25 million profiles; the proposal does not address growth beyond this limit."
+      ],
+      "overall_summary": "NexaWorks presents a well‑structured technical solution, clear implementation timeline, transparent pricing, and solid security certifications. While support arrangements and relevant experience are demonstrated, some gaps remain around long‑term scalability and depth of key‑person risk mitigation.",
+      "validation_warnings": [],
+      "final_rank": 1,
+      "rank_reason": "Highest PPI after applying the tie-break order."
+    },
+    {
+      "supplier_name": "Apex Systems",
+      "submission_date": "2026-09-10",
+      "experience_rating": 4.0,
+      "source_file": "Apex_Systems_Proposal.pdf",
+      "document": {
+        "filename": "Apex_Systems_Proposal.pdf",
+        "pages": 2,
+        "chars": 5461,
+        "extractor": "pymupdf",
+        "truncated": false
+      },
+      "llm_attempts": 1,
+      "raw_llm_output": "{\"supplier_name\":\"Apex Systems\",\"criteria\":[{\"criterion_id\":1,\"score\":9,\"max_score\":10,\"justification\":\"The proposal describes a cloud‑native, event‑driven architecture on Azure with Kafka, Delta Lake, 42 pre‑built connectors (including SAP and Salesforce) and proven scalability up to 50 million profiles, meeting the technical requirements.\",\"evidence\":\"event-driven architecture on Microsoft Azure: an Apache Kafka event backbone ingests POS, web, app and loyalty events with sub-second latency | Integrations: we provide 42 pre-built, versioned connectors, including certified connectors for SAP S/4HANA (OData and IDoc) and Salesforce Service Cloud (Platform Events and Bulk API 2.0) | Scalability: the platform auto-scales horizontally and has been load-tested at 50 million profiles and 15,000 events per second with p95 profile-lookup latency under 120 ms\"},{\"criterion_id\":2,\"score\":7,\"max_score\":10,\"justification\":\"A clear 7‑phase, 30‑week timeline with milestones and a detailed team roster is provided, but the risk mitigation approach is only noted as to be defined later, reducing confidence in execution risk management.\",\"evidence\":\"We follow a four-phase delivery over 7 months (30 weeks)... Phase ... Key milestone ... Team: 1 engagement lead, 2 solution architects, 6 data/integration engineers, 1 security architect, 2 QA engineers and 1 project manager (13 FTE at peak) | Key risks (identity-match quality, SAP data quality) are tracked in a risk log reviewed fortnightly; however, a detailed mitigation plan will be agreed in Phase 1\"},{\"criterion_id\":3,\"score\":8,\"max_score\":10,\"justification\":\"Pricing is presented with fixed implementation cost, annual licence and support fees, and clear assumptions, offering good transparency despite being above market average.\",\"evidence\":\"Implementation (fixed price, 30 weeks) 780,000 | Platform licence & Azure hosting, per year 165,000 | Support & maintenance, per year 48,000 | Total cost of ownership, 3 years 1,419,000 | Assumptions: Northwind provides test data and SAP/Salesforce sandbox access by week 4; up to 12 journey templates are included; change requests are charged at EUR 1,250 per consultant day; licence price is held for 3 years\"},{\"criterion_id\":4,\"score\":9,\"max_score\":10,\"justification\":\"The supplier lists ISO 27001 and SOC 2 Type II certifications, EU‑based hosting, strong encryption, key management, audit logs, and GDPR‑specific commitments, covering most security and compliance expectations.\",\"evidence\":\"Apex Systems holds ISO/IEC 27001:2022 certification and an unqualified SOC 2 Type II report (period ending June 2026) ... Controls include AES-256 encryption at rest, TLS 1.3 in transit, customer-managed keys in Azure Key Vault, role-based access with SSO and MFA, field-level pseudonymisation of personal data, and immutable audit logs retained for 7 years ... GDPR: we sign Northwind's Data Processing Agreement, maintain a record of processing, support automated data-subject access and erasure requests within 72 hours, and conduct a DPIA with Northwind's DPO in Phase 1\"},{\"criterion_id\":5,\"score\":8,\"max_score\":10,\"justification\":\"Support hours, on‑call coverage, response times, and recent CDP implementations for two European retailers are documented, though references are only available on request, limiting immediate verification.\",\"evidence\":\"Support is provided 08:00-18:00 CET on business days, with 24x7 on-call cover for Priority 1 incidents only. P1 response time is 1 hour; P2 is 4 business hours. | Relevant experience: CDP implementations for two European retailers in the last three years. References: Head of Data, Baltic Home Stores (fictional); CIO, Lumen Pharmacy Group (fictional)\"}],\"risks\":[\"Detailed risk mitigation plan is not provided in the proposal; it is only to be agreed in Phase 1, leaving a gap in risk management documentation.\"],\"overall_summary\":\"Apex Systems presents a technically robust, scalable solution with clear architecture, integration, and security controls. The implementation timeline and pricing are well defined, though risk mitigation details and reference verification are limited.\"}",
+      "absolute_score": 83.0,
+      "ppi": 94.4444,
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "criterion_name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10.0,
+          "score": 9.0,
+          "weighted_points": 27.0,
+          "benchmark_score": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "is_benchmark_leader": true,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "The proposal describes a cloud‑native, event‑driven architecture on Azure with Kafka, Delta Lake, 42 pre‑built connectors (including SAP and Salesforce) and proven scalability up to 50 million profiles, meeting the technical requirements.",
+          "evidence": "event-driven architecture on Microsoft Azure: an Apache Kafka event backbone ingests POS, web, app and loyalty events with sub-second latency | Integrations: we provide 42 pre-built, versioned connectors, including certified connectors for SAP S/4HANA (OData and IDoc) and Salesforce Service Cloud (Platform Events and Bulk API 2.0) | Scalability: the platform auto-scales horizontally and has been load-tested at 50 million profiles and 15,000 events per second with p95 profile-lookup latency under 120 ms"
+        },
+        {
+          "criterion_id": 2,
+          "criterion_name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10.0,
+          "score": 7.0,
+          "weighted_points": 14.0,
+          "benchmark_score": 9.0,
+          "gap": -2.0,
+          "relative_pct": 77.7778,
+          "is_benchmark_leader": false,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "A clear 7‑phase, 30‑week timeline with milestones and a detailed team roster is provided, but the risk mitigation approach is only noted as to be defined later, reducing confidence in execution risk management.",
+          "evidence": "We follow a four-phase delivery over 7 months (30 weeks)... Phase ... Key milestone ... Team: 1 engagement lead, 2 solution architects, 6 data/integration engineers, 1 security architect, 2 QA engineers and 1 project manager (13 FTE at peak) | Key risks (identity-match quality, SAP data quality) are tracked in a risk log reviewed fortnightly; however, a detailed mitigation plan will be agreed in Phase 1"
+        },
+        {
+          "criterion_id": 3,
+          "criterion_name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10.0,
+          "score": 8.0,
+          "weighted_points": 16.0,
+          "benchmark_score": 8.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "is_benchmark_leader": true,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "Pricing is presented with fixed implementation cost, annual licence and support fees, and clear assumptions, offering good transparency despite being above market average.",
+          "evidence": "Implementation (fixed price, 30 weeks) 780,000 | Platform licence & Azure hosting, per year 165,000 | Support & maintenance, per year 48,000 | Total cost of ownership, 3 years 1,419,000 | Assumptions: Northwind provides test data and SAP/Salesforce sandbox access by week 4; up to 12 journey templates are included; change requests are charged at EUR 1,250 per consultant day; licence price is held for 3 years"
+        },
+        {
+          "criterion_id": 4,
+          "criterion_name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10.0,
+          "score": 9.0,
+          "weighted_points": 18.0,
+          "benchmark_score": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "is_benchmark_leader": true,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "The supplier lists ISO 27001 and SOC 2 Type II certifications, EU‑based hosting, strong encryption, key management, audit logs, and GDPR‑specific commitments, covering most security and compliance expectations.",
+          "evidence": "Apex Systems holds ISO/IEC 27001:2022 certification and an unqualified SOC 2 Type II report (period ending June 2026) ... Controls include AES-256 encryption at rest, TLS 1.3 in transit, customer-managed keys in Azure Key Vault, role-based access with SSO and MFA, field-level pseudonymisation of personal data, and immutable audit logs retained for 7 years ... GDPR: we sign Northwind's Data Processing Agreement, maintain a record of processing, support automated data-subject access and erasure requests within 72 hours, and conduct a DPIA with Northwind's DPO in Phase 1"
+        },
+        {
+          "criterion_id": 5,
+          "criterion_name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10.0,
+          "score": 8.0,
+          "weighted_points": 8.0,
+          "benchmark_score": 9.0,
+          "gap": -1.0,
+          "relative_pct": 88.8889,
+          "is_benchmark_leader": false,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "Support hours, on‑call coverage, response times, and recent CDP implementations for two European retailers are documented, though references are only available on request, limiting immediate verification.",
+          "evidence": "Support is provided 08:00-18:00 CET on business days, with 24x7 on-call cover for Priority 1 incidents only. P1 response time is 1 hour; P2 is 4 business hours. | Relevant experience: CDP implementations for two European retailers in the last three years. References: Head of Data, Baltic Home Stores (fictional); CIO, Lumen Pharmacy Group (fictional)"
+        }
+      ],
+      "risks": [
+        "Detailed risk mitigation plan is not provided in the proposal; it is only to be agreed in Phase 1, leaving a gap in risk management documentation."
+      ],
+      "overall_summary": "Apex Systems presents a technically robust, scalable solution with clear architecture, integration, and security controls. The implementation timeline and pricing are well defined, though risk mitigation details and reference verification are limited.",
+      "validation_warnings": [],
+      "final_rank": 2,
+      "rank_reason": "NexaWorks is above Apex Systems on PPI (95.56 vs 94.44)."
+    },
+    {
+      "supplier_name": "Orbit Digital",
+      "submission_date": "2026-09-11",
+      "experience_rating": 4.5,
+      "source_file": "Orbit_Digital_Proposal.pdf",
+      "document": {
+        "filename": "Orbit_Digital_Proposal.pdf",
+        "pages": 2,
+        "chars": 4040,
+        "extractor": "pymupdf",
+        "truncated": false
+      },
+      "llm_attempts": 1,
+      "raw_llm_output": "{\"supplier_name\":\"Orbit Digital\",\"criteria\":[{\"criterion_id\":1,\"score\":6,\"max_score\":10,\"justification\":\"The proposal mentions an integration approach and that scalability will be assessed during discovery, showing some technical planning, but lacks concrete architecture details or proven scalability evidence.\",\"evidence\":\"Integration approach: the detailed integration architecture for SAP, Salesforce and the POS estate will be defined during the discovery phase... anticipate using a combination of APIs and file transfers as appropriate. Scalability will be assessed during discovery.\"},{\"criterion_id\":2,\"score\":8,\"max_score\":10,\"justification\":\"Provides a clear 26‑week timeline with defined phases, milestones, staffing roles and a risk‑management process, though team size is tentative pending discovery.\",\"evidence\":\"We use our proven Orbit Launch methodology across 26 weeks: Phase Weeks Milestone Discovery 1-6 Discovery report Design & build 7-18 Platform configured Test & launch 19-26 Launch Team: an engagement partner, a programme manager, a CRM strategist and a delivery team sized after discovery (typically 8-10 people). Risks will be managed through our standard RAID log.\"},{\"criterion_id\":3,\"score\":7,\"max_score\":10,\"justification\":\"Pricing is presented with clear line items, ranges and assumptions, but integration effort is excluded and cost ranges introduce uncertainty about total spend.\",\"evidence\":\"Discovery (fixed price) 95,000 Design, build & launch (estimate) 420,000 - 520,000 Platform licences, per year 125,000 Managed service, per year 40,000 Indicative total cost of ownership, 3 years 1,010,000 - 1,110,000 Assumptions: the build estimate will be confirmed after discovery; licence pricing depends on final profile volumes; integration effort is not yet included in the estimate and will be quoted separately after discovery.\"},{\"criterion_id\":4,\"score\":7,\"max_score\":10,\"justification\":\"Shows ISO 27001 and SOC 2 Type II certifications and GDPR commitments, but detailed security controls for integrations are deferred to the design phase.\",\"evidence\":\"Orbit Digital is ISO/IEC 27001 certified. The proposed platform is hosted in EU data centres and the software vendor holds SOC 2 Type II. We will sign a GDPR Data Processing Agreement and apply role-based access controls. Detailed security controls for integrations will be documented during design.\"},{\"criterion_id\":5,\"score\":9,\"max_score\":10,\"justification\":\"Strong support model with defined response times and 24x7 coverage for critical incidents, extensive retail experience and multiple references, though references are fictional as noted.\",\"evidence\":\"Managed service: 24x5 support desk with 24x7 cover for P1 incidents; P1 response 30 minutes, P2 response 4 hours. A named customer success manager runs quarterly business reviews. Experience: 60+ retail engagements since 2010, including CDP implementations for eleven multi-country retailers in the past five years. References (fictional, contactable): CMO, Aurora Department Stores ...\"}],\"risks\":[\"Integration effort and associated cost are not priced and will be quoted after discovery, creating cost uncertainty\",\"Scalability and detailed security controls are only to be assessed or documented during later phases, leaving performance and compliance gaps unaddressed\",\"Pricing ranges and assumptions (e.g., licence volumes) may lead to higher than expected total cost\",\"Reliance on discovery phase outcomes means key technical and risk details are not yet defined\"],\"overall_summary\":\"Orbit Digital presents a solid technical and implementation approach with clear timelines, experienced staff, and strong security certifications. However, key details on integration effort, scalability, and final cost remain dependent on the discovery phase, introducing uncertainty around total cost and performance.\"}",
+      "absolute_score": 71.0,
+      "ppi": 80.8333,
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "criterion_name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10.0,
+          "score": 6.0,
+          "weighted_points": 18.0,
+          "benchmark_score": 9.0,
+          "gap": -3.0,
+          "relative_pct": 66.6667,
+          "is_benchmark_leader": false,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "The proposal mentions an integration approach and that scalability will be assessed during discovery, showing some technical planning, but lacks concrete architecture details or proven scalability evidence.",
+          "evidence": "Integration approach: the detailed integration architecture for SAP, Salesforce and the POS estate will be defined during the discovery phase... anticipate using a combination of APIs and file transfers as appropriate. Scalability will be assessed during discovery."
+        },
+        {
+          "criterion_id": 2,
+          "criterion_name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10.0,
+          "score": 8.0,
+          "weighted_points": 16.0,
+          "benchmark_score": 9.0,
+          "gap": -1.0,
+          "relative_pct": 88.8889,
+          "is_benchmark_leader": false,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "Provides a clear 26‑week timeline with defined phases, milestones, staffing roles and a risk‑management process, though team size is tentative pending discovery.",
+          "evidence": "We use our proven Orbit Launch methodology across 26 weeks: Phase Weeks Milestone Discovery 1-6 Discovery report Design & build 7-18 Platform configured Test & launch 19-26 Launch Team: an engagement partner, a programme manager, a CRM strategist and a delivery team sized after discovery (typically 8-10 people). Risks will be managed through our standard RAID log."
+        },
+        {
+          "criterion_id": 3,
+          "criterion_name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10.0,
+          "score": 7.0,
+          "weighted_points": 14.0,
+          "benchmark_score": 8.0,
+          "gap": -1.0,
+          "relative_pct": 87.5,
+          "is_benchmark_leader": false,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "Pricing is presented with clear line items, ranges and assumptions, but integration effort is excluded and cost ranges introduce uncertainty about total spend.",
+          "evidence": "Discovery (fixed price) 95,000 Design, build & launch (estimate) 420,000 - 520,000 Platform licences, per year 125,000 Managed service, per year 40,000 Indicative total cost of ownership, 3 years 1,010,000 - 1,110,000 Assumptions: the build estimate will be confirmed after discovery; licence pricing depends on final profile volumes; integration effort is not yet included in the estimate and will be quoted separately after discovery."
+        },
+        {
+          "criterion_id": 4,
+          "criterion_name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10.0,
+          "score": 7.0,
+          "weighted_points": 14.0,
+          "benchmark_score": 9.0,
+          "gap": -2.0,
+          "relative_pct": 77.7778,
+          "is_benchmark_leader": false,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "Shows ISO 27001 and SOC 2 Type II certifications and GDPR commitments, but detailed security controls for integrations are deferred to the design phase.",
+          "evidence": "Orbit Digital is ISO/IEC 27001 certified. The proposed platform is hosted in EU data centres and the software vendor holds SOC 2 Type II. We will sign a GDPR Data Processing Agreement and apply role-based access controls. Detailed security controls for integrations will be documented during design."
+        },
+        {
+          "criterion_id": 5,
+          "criterion_name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10.0,
+          "score": 9.0,
+          "weighted_points": 9.0,
+          "benchmark_score": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "is_benchmark_leader": true,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "Strong support model with defined response times and 24x7 coverage for critical incidents, extensive retail experience and multiple references, though references are fictional as noted.",
+          "evidence": "Managed service: 24x5 support desk with 24x7 cover for P1 incidents; P1 response 30 minutes, P2 response 4 hours. A named customer success manager runs quarterly business reviews. Experience: 60+ retail engagements since 2010, including CDP implementations for eleven multi-country retailers in the past five years. References (fictional, contactable): CMO, Aurora Department Stores ..."
+        }
+      ],
+      "risks": [
+        "Integration effort and associated cost are not priced and will be quoted after discovery, creating cost uncertainty",
+        "Scalability and detailed security controls are only to be assessed or documented during later phases, leaving performance and compliance gaps unaddressed",
+        "Pricing ranges and assumptions (e.g., licence volumes) may lead to higher than expected total cost",
+        "Reliance on discovery phase outcomes means key technical and risk details are not yet defined"
+      ],
+      "overall_summary": "Orbit Digital presents a solid technical and implementation approach with clear timelines, experienced staff, and strong security certifications. However, key details on integration effort, scalability, and final cost remain dependent on the discovery phase, introducing uncertainty around total cost and performance.",
+      "validation_warnings": [],
+      "final_rank": 3,
+      "rank_reason": "Apex Systems is above Orbit Digital on PPI (94.44 vs 80.83)."
+    },
+    {
+      "supplier_name": "BrightPath Tech",
+      "submission_date": "2026-09-08",
+      "experience_rating": 2.0,
+      "source_file": "BrightPath_Tech_Proposal.pdf",
+      "document": {
+        "filename": "BrightPath_Tech_Proposal.pdf",
+        "pages": 2,
+        "chars": 3766,
+        "extractor": "pymupdf",
+        "truncated": false
+      },
+      "llm_attempts": 1,
+      "raw_llm_output": "{\"supplier_name\":\"BrightPath Tech\",\"criteria\":[{\"criterion_id\":1,\"score\":6,\"max_score\":10,\"justification\":\"The proposal describes a SaaS CDP architecture, standard SAP and Salesforce connectors, and notes the platform is cloud‑based and scalable, but custom integrations are excluded and details are limited, reducing the score.\",\"evidence\":\"We will implement a SaaS CDP (a leading off-the-shelf product) configured with its standard data model. | Integration with SAP and Salesforce will use the CDP's standard connectors where available; custom integration work, if required, is not included in this proposal. The platform is scalable and cloud based.\"},{\"criterion_id\":2,\"score\":7,\"max_score\":10,\"justification\":\"A clear 12‑week timeline with phased milestones and staffing (project lead and three consultants) is provided, though the risk plan is only mentioned as to be prepared later, limiting the score.\",\"evidence\":\"Our accelerated methodology delivers in 12 weeks: | Team: a project lead and three consultants. Additional resources can be added if needed. A risk plan will be prepared after kick-off.\"},{\"criterion_id\":3,\"score\":8,\"max_score\":10,\"justification\":\"Pricing is presented in a table with implementation, subscription, support costs and a 3‑year TCO, plus explicit assumptions, giving good commercial clarity.\",\"evidence\":\"Implementation (12 weeks) 210,000 ... Total cost of ownership, 3 years 609,000 Assumptions: implementation is time-and-materials capped at the amount above; subscription pricing is based on 5 million profiles, and additional profiles are charged at the vendor's list price; POS integration and custom SAP/Salesforce integration are out of scope.\"},{\"criterion_id\":4,\"score\":5,\"max_score\":10,\"justification\":\"The document mentions adherence to best practices, pending ISO 27001 certification, GDPR awareness training, and reliance on the vendor for platform security, but lacks concrete certifications or audit details, resulting in a moderate score.\",\"evidence\":\"BrightPath follows industry best practices for information security. The CDP vendor is responsible for platform security and hosting. We are currently working towards ISO 27001 certification. We take GDPR seriously and our consultants complete data-protection awareness training.\"},{\"criterion_id\":5,\"score\":6,\"max_score\":10,\"justification\":\"Support model (email, business‑hour response within one day) is defined, and the supplier cites two similar projects and offers references, but experience is limited and support scope is narrow, leading to a modest score.\",\"evidence\":\"After go-live we provide email-based support during business hours (09:00-17:00 IST), with a target response within one business day. | BrightPath Tech was founded in 2024. Our team has delivered two marketing automation projects for mid-sized online retailers. References are available upon request.\"}],\"risks\":[\"Custom SAP/Salesforce integration and POS integration are explicitly out of scope, potentially requiring additional budget and time.\",\"Risk mitigation plan is only stated to be prepared after kick‑off, leaving early‑stage risks undefined.\",\"ISO 27001 certification is only ‘working towards’, so security compliance is not yet verified.\",\"Reliance on the CDP vendor for platform security may limit auditability and control for the client.\"],\"overall_summary\":\"BrightPath Tech offers a fast, low‑cost SaaS CDP solution with a clear 12‑week implementation schedule and transparent pricing. However, the proposal limits custom integrations, provides an incomplete risk plan, and lacks fully certified security controls, indicating potential gaps that the client should address.\"}",
+      "absolute_score": 64.0,
+      "ppi": 73.3333,
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "criterion_name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10.0,
+          "score": 6.0,
+          "weighted_points": 18.0,
+          "benchmark_score": 9.0,
+          "gap": -3.0,
+          "relative_pct": 66.6667,
+          "is_benchmark_leader": false,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "The proposal describes a SaaS CDP architecture, standard SAP and Salesforce connectors, and notes the platform is cloud‑based and scalable, but custom integrations are excluded and details are limited, reducing the score.",
+          "evidence": "We will implement a SaaS CDP (a leading off-the-shelf product) configured with its standard data model. | Integration with SAP and Salesforce will use the CDP's standard connectors where available; custom integration work, if required, is not included in this proposal. The platform is scalable and cloud based."
+        },
+        {
+          "criterion_id": 2,
+          "criterion_name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10.0,
+          "score": 7.0,
+          "weighted_points": 14.0,
+          "benchmark_score": 9.0,
+          "gap": -2.0,
+          "relative_pct": 77.7778,
+          "is_benchmark_leader": false,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "A clear 12‑week timeline with phased milestones and staffing (project lead and three consultants) is provided, though the risk plan is only mentioned as to be prepared later, limiting the score.",
+          "evidence": "Our accelerated methodology delivers in 12 weeks: | Team: a project lead and three consultants. Additional resources can be added if needed. A risk plan will be prepared after kick-off."
+        },
+        {
+          "criterion_id": 3,
+          "criterion_name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10.0,
+          "score": 8.0,
+          "weighted_points": 16.0,
+          "benchmark_score": 8.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "is_benchmark_leader": true,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "Pricing is presented in a table with implementation, subscription, support costs and a 3‑year TCO, plus explicit assumptions, giving good commercial clarity.",
+          "evidence": "Implementation (12 weeks) 210,000 ... Total cost of ownership, 3 years 609,000 Assumptions: implementation is time-and-materials capped at the amount above; subscription pricing is based on 5 million profiles, and additional profiles are charged at the vendor's list price; POS integration and custom SAP/Salesforce integration are out of scope."
+        },
+        {
+          "criterion_id": 4,
+          "criterion_name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10.0,
+          "score": 5.0,
+          "weighted_points": 10.0,
+          "benchmark_score": 9.0,
+          "gap": -4.0,
+          "relative_pct": 55.5556,
+          "is_benchmark_leader": false,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "The document mentions adherence to best practices, pending ISO 27001 certification, GDPR awareness training, and reliance on the vendor for platform security, but lacks concrete certifications or audit details, resulting in a moderate score.",
+          "evidence": "BrightPath follows industry best practices for information security. The CDP vendor is responsible for platform security and hosting. We are currently working towards ISO 27001 certification. We take GDPR seriously and our consultants complete data-protection awareness training."
+        },
+        {
+          "criterion_id": 5,
+          "criterion_name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10.0,
+          "score": 6.0,
+          "weighted_points": 6.0,
+          "benchmark_score": 9.0,
+          "gap": -3.0,
+          "relative_pct": 66.6667,
+          "is_benchmark_leader": false,
+          "status": "OK",
+          "evidence_verified": true,
+          "justification": "Support model (email, business‑hour response within one day) is defined, and the supplier cites two similar projects and offers references, but experience is limited and support scope is narrow, leading to a modest score.",
+          "evidence": "After go-live we provide email-based support during business hours (09:00-17:00 IST), with a target response within one business day. | BrightPath Tech was founded in 2024. Our team has delivered two marketing automation projects for mid-sized online retailers. References are available upon request."
+        }
+      ],
+      "risks": [
+        "Custom SAP/Salesforce integration and POS integration are explicitly out of scope, potentially requiring additional budget and time.",
+        "Risk mitigation plan is only stated to be prepared after kick‑off, leaving early‑stage risks undefined.",
+        "ISO 27001 certification is only ‘working towards’, so security compliance is not yet verified.",
+        "Reliance on the CDP vendor for platform security may limit auditability and control for the client."
+      ],
+      "overall_summary": "BrightPath Tech offers a fast, low‑cost SaaS CDP solution with a clear 12‑week implementation schedule and transparent pricing. However, the proposal limits custom integrations, provides an incomplete risk plan, and lacks fully certified security controls, indicating potential gaps that the client should address.",
+      "validation_warnings": [],
+      "final_rank": 4,
+      "rank_reason": "Orbit Digital is above BrightPath Tech on PPI (80.83 vs 73.33)."
+    }
+  ],
+  "tie_breaks": [
+    {
+      "higher": "NexaWorks",
+      "lower": "Apex Systems",
+      "decided_by": "PPI",
+      "explanation": "NexaWorks is above Apex Systems on PPI (95.56 vs 94.44)."
+    },
+    {
+      "higher": "Apex Systems",
+      "lower": "Orbit Digital",
+      "decided_by": "PPI",
+      "explanation": "Apex Systems is above Orbit Digital on PPI (94.44 vs 80.83)."
+    },
+    {
+      "higher": "Orbit Digital",
+      "lower": "BrightPath Tech",
+      "decided_by": "PPI",
+      "explanation": "Orbit Digital is above BrightPath Tech on PPI (80.83 vs 73.33)."
+    }
+  ],
+  "skipped_suppliers": [],
+  "warnings": [],
+  "agent_trace": [
+    {
+      "ts": "2026-09-27T09:09:10+00:00",
+      "step": "batch",
+      "message": "Created batch RFP-20260927-090910-A20F77 with 4 suppliers"
+    },
+    {
+      "ts": "2026-09-27T09:09:10+00:00",
+      "step": "load_criteria",
+      "message": "Loaded 5 active criteria (weights total 100%)."
+    },
+    {
+      "ts": "2026-09-27T09:09:10+00:00",
+      "step": "document_tool",
+      "message": "Apex Systems: extracted 5,461 chars from 2 pages via pymupdf"
+    },
+    {
+      "ts": "2026-09-27T09:09:15+00:00",
+      "step": "evaluation_agent",
+      "message": "Apex Systems: LLM response received (attempt 1, 4,142 chars)"
+    },
+    {
+      "ts": "2026-09-27T09:09:15+00:00",
+      "step": "validation_tool",
+      "message": "Apex Systems: schema valid, 0 normalisation warnings"
+    },
+    {
+      "ts": "2026-09-27T09:09:15+00:00",
+      "step": "document_tool",
+      "message": "BrightPath Tech: extracted 3,766 chars from 2 pages via pymupdf"
+    },
+    {
+      "ts": "2026-09-27T09:09:20+00:00",
+      "step": "evaluation_agent",
+      "message": "BrightPath Tech: LLM response received (attempt 1, 3,672 chars)"
+    },
+    {
+      "ts": "2026-09-27T09:09:20+00:00",
+      "step": "validation_tool",
+      "message": "BrightPath Tech: schema valid, 0 normalisation warnings"
+    },
+    {
+      "ts": "2026-09-27T09:09:20+00:00",
+      "step": "document_tool",
+      "message": "NexaWorks: extracted 5,327 chars from 2 pages via pymupdf"
+    },
+    {
+      "ts": "2026-09-27T09:09:41+00:00",
+      "step": "evaluation_agent",
+      "message": "NexaWorks: LLM response received (attempt 1, 5,134 chars)"
+    },
+    {
+      "ts": "2026-09-27T09:09:41+00:00",
+      "step": "validation_tool",
+      "message": "NexaWorks: schema valid, 0 normalisation warnings"
+    },
+    {
+      "ts": "2026-09-27T09:09:41+00:00",
+      "step": "document_tool",
+      "message": "Orbit Digital: extracted 4,040 chars from 2 pages via pymupdf"
+    },
+    {
+      "ts": "2026-09-27T09:10:13+00:00",
+      "step": "evaluation_agent",
+      "message": "Orbit Digital: LLM response received (attempt 1, 3,865 chars)"
+    },
+    {
+      "ts": "2026-09-27T09:10:13+00:00",
+      "step": "validation_tool",
+      "message": "Orbit Digital: schema valid, 0 normalisation warnings"
+    },
+    {
+      "ts": "2026-09-27T09:10:13+00:00",
+      "step": "ranking_tool",
+      "message": "Scored 4 suppliers; benchmarks computed; rank 1 = NexaWorks (PPI 95.56)"
+    },
+    {
+      "ts": "2026-09-27T09:10:13+00:00",
+      "step": "persist",
+      "message": "Saved run RFP-20260927-090910-A20F77 to SQLite (4 supplier rows)"
+    }
+  ]
+}
